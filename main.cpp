@@ -1,6 +1,15 @@
 #include <iostream>
-using namespace std;
+#include "chapter_2.h"
+#include "chapter_2/exceptions.h"
 
-int main() { /// int main() {} --simple cpp program
+using namespace std; /// make names from std visible without std:: (§2.4.2)
+
+
+int main() { /// pg.54 int main() {} --simple cpp program
+
     std::cout << "Hello world! ^_^\n";
+
+    //RunChapterTwo();
+    cout <<"\nchapter_2::exceptions::ChapterTwoExceptions():\n"; chapter_2::exceptions::ChapterTwoExceptions();
+
 }

@@ -6,11 +6,6 @@
 /// Runs all chapter code
 void RunChapterTwo() {
 
-    std::cout << "\n\nRun Chapter One codes! ^_^\n\n";
-
-    /// pg.54 pg.54 pg.55 chapter_2 square(2.0)
-    // std::cout << "pg.54 pg.54 pg.55  chapter_2::square(2.0) func returns: " << chapter_2::square(2.0) << '\n' << std::endl;
-
     /// pg.59 bool accept2()
     // std::cout << "pg.59 bool accept2():\n";
     // chapter_2::accept2();
@@ -61,13 +56,6 @@ void RunChapterTwo() {
 }
 
 namespace chapter_2 {
-
-    /// pg.54: square func -- a double precision floating-point number
-    double square(double x)
-    {
-        return x * x;
-    }
-
 
     /// pg.59: accept2 func
     bool accept2()

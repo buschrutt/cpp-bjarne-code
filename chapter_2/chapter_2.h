@@ -2,12 +2,11 @@
 #ifndef CPP_BJARNE_CODE_CHAPTER_2_H
 #define CPP_BJARNE_CODE_CHAPTER_2_H
 
+#include "square.h"
 #include "exceptions.h"
 #include "invariants.h"
 
 namespace chapter_2 {
-
-    double square(double x);
 
     bool accept2();
 

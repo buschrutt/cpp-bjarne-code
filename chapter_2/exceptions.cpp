@@ -1,10 +1,8 @@
-#pragma once
-
-#include <iostream>
 #include "exceptions.h"
 
 namespace chapter_2::exceptions {
 
+    /// Begin Of %%%%%%%%%% user class Vector
     Vector::Vector(int s) // definition of the constructor
             :elem{new double[s]}, sz{s} // initialize members
     {
@@ -20,6 +18,7 @@ namespace chapter_2::exceptions {
     {
         return sz;
     }
+    /// End Of ^^^ user class Vector
 
     void f(Vector& v)
     {
@@ -29,13 +28,14 @@ namespace chapter_2::exceptions {
         }
         catch (std::out_of_range&) { // oops: out_of_range error
             // ... handle range error ...
-            std::cout << "oops: out_of_range error\n";
+            std::cout << "oops: out_of_range error --IT SHOULD BE\n";
         }
         // ...
     }
 
     void ChapterTwoExceptions()
     {
+        std::cout <<"\nchapter_2::exceptions::ChapterTwoExceptions() --pg.70:\n";
         Vector v(1);
         f(v);
     }

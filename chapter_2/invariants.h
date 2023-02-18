@@ -1,12 +1,13 @@
 #pragma once
 
-#ifndef CPP_BJARNE_CODE_EXCEPTIONS_H
-#define CPP_BJARNE_CODE_EXCEPTIONS_H
+#ifndef CPP_BJARNE_CODE_INVARIANTS_H
+#define CPP_BJARNE_CODE_INVARIANTS_H
 
+#include <new>
 #include <stdexcept>
 #include <iostream>
 
-namespace chapter_2::exceptions {
+namespace chapter_2::invariants {
 
     /// Begin Of %%%%%%%%%% user class Vector definition
     class Vector {
@@ -24,11 +25,14 @@ namespace chapter_2::exceptions {
     };
     /// End Of ^^^ user class Vector definition
 
-    void f(Vector& v);
+    void test();
 
-    void ChapterTwoExceptions();
+    void ChapterTwoInvariants();
+
+} // chapter_2::invariants
 
 
-} // chapter_2::exceptions
 
-#endif //CPP_BJARNE_CODE_EXCEPTIONS_H
+
+
+#endif //CPP_BJARNE_CODE_INVARIANTS_H

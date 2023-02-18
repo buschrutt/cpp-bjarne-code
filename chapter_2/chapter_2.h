@@ -2,11 +2,34 @@
 #ifndef CPP_BJARNE_CODE_CHAPTER_2_H
 #define CPP_BJARNE_CODE_CHAPTER_2_H
 
-#include "square.h"
 #include "exceptions.h"
 #include "invariants.h"
 
 namespace chapter_2 {
+
+    /// Begin of %%%%%%%%%% RunChapter funcs
+    void RunChapterTwo_Square();
+
+    void RunChapterTwo_Accept2();
+
+    void RunChapterTwo_Accept3();
+
+    void RunChapterTwo_CopyPrintIncrement();
+
+    void RunChapterTwo_CountX();
+
+    void RunChapterTwo_UserType();
+
+    void RunChapterTwo_MakeAndVector();
+
+    void RunChapterTwo_Enumerations();
+
+    void RunChapterTwo_VectorDefinition();
+
+    void RunChapterTwo_Namespaces();
+    /// ^^^ End of RunChapter funcs
+
+    double square(double x);
 
     bool accept2();
 
@@ -71,7 +94,4 @@ namespace chapter_2 {
 
 }
 
-void RunChapterTwo();
-
 #endif //CPP_BJARNE_CODE_CHAPTER_2_H
-

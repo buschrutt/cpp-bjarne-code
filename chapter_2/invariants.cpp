@@ -38,12 +38,10 @@ namespace chapter_2::invariants {
         std::cout <<"-- no error was thrown\n";
     }
 
-    void ChapterTwoInvariants()
+    void ChapterTwo_Invariants()
     {
         std::cout <<"\nchapter_2::invariants::ChapterTwoExceptions() --pg.71:\n";
         test();
     }
 
 }
-
-

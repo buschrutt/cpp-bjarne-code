@@ -26,7 +26,7 @@ namespace chapter_2::exceptions {
 
     void f(Vector& v);
 
-    void ChapterTwoExceptions();
+    void ChapterTwo_Exceptions();
 
 
 } // chapter_2::exceptions

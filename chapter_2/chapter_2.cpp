@@ -4,58 +4,101 @@
 
 /// ^^_^^ nice
 /// Runs all chapter code
-void RunChapterTwo() {
-
-    /// pg.59 bool accept2()
-    // std::cout << "pg.59 bool accept2():\n";
-    // chapter_2::accept2();
-
-    /// pg.59 bool accept3()
-    // std::cout << "pg.59 bool accept3():\n";
-    // chapter_2::accept3();
-
-    /// pg.60 - pg.61 Three funcs combined: copy_fct, increment, print
-    // std::cout << "pg.60 - pg.61 Three funcs combined: copy_fct, increment, print:\n";
-    // chapter_2::copy_print_increment_fct();
-
-    /// pg.61 count_x Counts char entries &--check that a pointer argument that is
-    /// supposed to point to something
-    // std::cout << "pg.61 chapter_2::count_x Check that a pointer argument that is supposed to point to something --must be 3:\n";
-    // std::string alibaba = "alibaba";
-    // auto p = &alibaba[0];
-    // std::cout << chapter_2::count_x(p, 'a') << '\n';
-
-    /// pg.62 - pg.64 User-defined type --struct Vector initialization
-    /// For struct declaration please see the .h file
-    /// Func that uses initialized Vector, calculates sum of entered 5 int numbers
-    // std::cout << "Func that uses initialized Vector, calculates sum of entered 5 int numbers:\n";
-    // auto sum = chapter_2::read_and_sum(5);
-    // std::cout << "sum: " << sum << '\n';
-
-    /// pg.64 Make a vector of s elements, read into elements, gets sum
-    //std::cout << "Func that uses initialized Vector class, calculates sum of entered 5 int numbers:\n";
-    //auto sum = chapter_2::read_and_sum_2(5);
-    //std::cout << "sum: " << sum << '\n';
-
-    /// pg.65 - pg.66 Enumerations
-    //std::cout << '\n' << "Changes color using define operators prefix increment: ++ :" << '\n';
-    //chapter_2::TrafficLightChange();
-
-    /// %%%%%%%%%% pg.67 Class Vector definition and example of use %%%%%%%%%%
-    /// Example of use, initialization with 3 elems & Assignment 1, 2, 3
-    /// & Printing the values and size()
-    //chapter_2::SampleOfVectorUse();
-    /// Example of use from the book
-    //auto v = chapter_2::Vector(3);
-    //std::cout << "sqrt_sum(chapter_2::Vector) = " << chapter_2::sqrt_sum(v) << '\n';
-
-    /// pg.69 Namespaces
-    chapter_2::My_code::main();
-
-
-}
-
 namespace chapter_2 {
+
+    /// Begin of %%%%%%%%%% RunChapter funcs
+    void RunChapterTwo_Square()
+    {
+        /// pg.55 chapter_2 square(2.0)
+        std::cout <<"\nchapter_2::RunChapterTwoSquare() --pg.55:\n";
+        std::cout << "pg.54 pg.54 pg.55  chapter_2::square(2.0) func returns: ";
+        std::cout << chapter_2::square(2.0) << '\n' << std::endl;
+    }
+
+    void RunChapterTwo_Accept2()
+    {
+        /// pg.59 bool accept2()
+        std::cout <<"\nchapter_2::RunChapterTwoAccept2() --pg.59:\n";
+        chapter_2::accept2();
+    }
+
+    void RunChapterTwo_Accept3()
+    {
+        /// pg.59 bool accept3()
+        std::cout <<"\nchapter_2::RunChapterTwoAccept3() --pg.59:\n";
+        chapter_2::accept3();
+    }
+
+    void RunChapterTwo_CopyPrintIncrement()
+    {
+        /// pg.60 - pg.61 Three funcs combined: copy_fct, increment, print
+        std::cout <<"\nchapter_2::RunChapterTwoCopyPrintIncrement() --pg.59:\n";
+        chapter_2::copy_print_increment_fct();
+    }
+
+    void RunChapterTwo_CountX()
+    {
+        /// pg.61 count_x Counts char entries &--check that a pointer argument that is
+        /// pg.61 chapter_2::count_x Check that a pointer argument that is supposed to point to something --must be 3
+        /// supposed to point to something
+        std::cout <<"\nchapter_2::RunChapterTwoCountX() --must be 3 --pg.61:\n";
+        std::string alibaba = "alibaba";
+        auto p = &alibaba[0];
+        std::cout << chapter_2::count_x(p, 'a') << '\n';
+    }
+
+    void RunChapterTwo_UserType()
+    {
+        /// pg.62 - pg.64 User-defined type --struct Vector initialization
+        /// For struct declaration please see the .h file
+        /// Func that uses initialized Vector, calculates sum of entered 5 int numbers
+        std::cout <<"\nchapter_2::RunChapterTwoUserType() --must entered 5 int numbers --pg.62-pg.64:\n";
+        auto sum = chapter_2::read_and_sum(5);
+        std::cout << "sum: " << sum << '\n';
+    }
+
+    void RunChapterTwo_MakeAndVector()
+    {
+        /// pg.64 Make a vector of s elements, read into elements, gets sum
+        std::cout <<"\nchapter_2::RunChapterTwoMakeAndVector() --must entered 5 int numbers --pg.64:\n";
+        auto sum = chapter_2::read_and_sum_2(5);
+        std::cout << "sum: " << sum << '\n';
+    }
+
+    void RunChapterTwo_Enumerations()
+    {
+        /// pg.65 - pg.66 Enumerations
+        std::cout <<"\nchapter_2::RunChapterTwoEnumerations() --pg.64:\n";
+        chapter_2::TrafficLightChange();
+    }
+
+    void RunChapterTwo_VectorDefinition()
+    {
+        /// %%%%%%%%%% pg.67 Class Vector definition and example of use %%%%%%%%%%
+        /// Example of use, initialization with 3 elems & Assignment 1, 2, 3
+        /// & Printing the values and size()
+        std::cout <<"\nchapter_2::RunChapterTwoVectorDefinition() --pg.67:\n";
+        chapter_2::SampleOfVectorUse();
+        /// Example of use from the book
+        auto v = chapter_2::Vector(3);
+        std::cout << "sqrt_sum(chapter_2::Vector) = " << chapter_2::sqrt_sum(v) << '\n';
+    }
+
+    void RunChapterTwo_Namespaces()
+    {
+        /// pg.69 Namespaces
+        std::cout <<"\nchapter_2::RunChapterTwoVectorDefinition() --pg.69:\n";
+        chapter_2::My_code::main();
+    }
+    /// ^^^ End of RunChapter funcs
+
+
+    /// pg.54: square func -- a double precision floating-point number
+    double square(double x)
+    {
+        return x * x;
+    }
+
 
     /// pg.59: accept2 func
     bool accept2()

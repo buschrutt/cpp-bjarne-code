@@ -27,12 +27,9 @@ namespace chapter_2::invariants {
 
     void test();
 
-    void ChapterTwoInvariants();
+    void ChapterTwo_Invariants();
 
 } // chapter_2::invariants
-
-
-
 
 
 #endif //CPP_BJARNE_CODE_INVARIANTS_H

@@ -33,7 +33,7 @@ namespace chapter_2::exceptions {
         // ...
     }
 
-    void ChapterTwoExceptions()
+    void ChapterTwo_Exceptions()
     {
         std::cout <<"\nchapter_2::exceptions::ChapterTwoExceptions() --pg.70:\n";
         Vector v(1);

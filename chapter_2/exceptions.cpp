@@ -35,7 +35,7 @@ namespace chapter_2::exceptions {
 
     void ChapterTwo_Exceptions()
     {
-        std::cout <<"\nchapter_2::exceptions::ChapterTwoExceptions() --pg.70:\n";
+        std::cout <<"\nchapter_2::exceptions::ChapterTwo_Exceptions() --pg.55:\n";
         Vector v(1);
         f(v);
     }

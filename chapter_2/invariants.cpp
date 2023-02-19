@@ -40,7 +40,7 @@ namespace chapter_2::invariants {
 
     void ChapterTwo_Invariants()
     {
-        std::cout <<"\nchapter_2::invariants::ChapterTwoExceptions() --pg.71:\n";
+        std::cout <<"\nchapter_2::invariants::ChapterTwo_Invariants() --pg.56:\n";
         test();
     }
 

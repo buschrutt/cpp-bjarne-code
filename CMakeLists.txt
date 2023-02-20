@@ -10,4 +10,5 @@ add_executable(cpp-bjarne-code main.cpp
         chapter_3/arithmetic_type.cpp
         chapter_3/container.cpp
         chapter_3/abstract.cpp
+        chapter_3/hierarchies.cpp
         )

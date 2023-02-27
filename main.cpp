@@ -33,8 +33,15 @@ int main() { /// pg.54 int main() {} --the minimal C++ program
     //chapter_3::abstract::ChapterThree_Initialization();
     //chapter_3::abstract::ChapterThree_Abstract();
     //chapter_3::abstract::ChapterThree_Abstract2();
-    chapter_3::hierarchies::ChapterThree_DrawSmiley();
-
+    //chapter_3::hierarchies::ChapterThree_DrawSmiley();
+    //chapter_3::hierarchies::ChapterThree_DrawShapes();
+    //chapter_3::copying::ChapterThree_CopyingContainers();
+    //chapter_3::copying::ChapterThree_MovingContainers();
+    //chapter_3::copying::ChapterThree_Thread();
+    //chapter_3::templates::ChapterThree_TemplateVector();
+    //chapter_3::templates::ChapterThree_FunctionTemplates();
+    //chapter_3::templates::ChapterThree_FunctionObjects();
+    //chapter_3::templates::ChapterThree_TemplateVariadic();
 
 
     std::cout << "\nAll good! ^_^";

@@ -96,6 +96,42 @@ namespace chapter_3::hierarchies
 
     void ChapterThree_DrawSmiley();
 
+    /// --!-- ChapterThree_DrawShapes handling
+
+    class Triangle : public Shape {
+    public:
+        Triangle(Point p1, Point p2, Point p3): p1_{p1}, p2_{p2}, p3_{p3} {}; // constructor
+
+        [[nodiscard]] Point center() const override { return p1_; }
+
+        void move(Point to) override;
+
+        [[nodiscard]] std::string draw() const override;
+
+        void rotate(int angle) override {}
+
+    private:
+        Point p1_, p2_, p3_; // Triangle points
+    };
+
+    enum class Kind { circle, triangle , smiley };
+
+    Shape* read_shape(std::istream& is); // read shape descriptions from input stream is
+
+    void draw_all(std::vector<Shape*>& shapes, std::string& filename);
+
+    void user(std::string filename);
+
+    std::unique_ptr<Shape> read_shape_uptr(std::istream& is); // read shape descriptions from input stream is
+
+    void draw_all_uptr(const std::vector<std::unique_ptr<Shape>>& shapes, std::string& filename);
+
+    void rotate_all_uptr(std::vector<std::unique_ptr<Shape>>& shapes, int angle);
+
+    void user_uptr(std::string& filename);
+
+    void ChapterThree_DrawShapes();
+
 } // chapter_3::hierarchies
 
 #endif //CPP_BJARNE_CODE_HIERARCHIES_H

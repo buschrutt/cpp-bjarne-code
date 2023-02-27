@@ -11,4 +11,6 @@ add_executable(cpp-bjarne-code main.cpp
         chapter_3/container.cpp
         chapter_3/abstract.cpp
         chapter_3/hierarchies.cpp
+        chapter_3/copying.cpp
+        chapter_3/templates.cpp
         )

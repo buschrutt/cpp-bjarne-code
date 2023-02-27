@@ -7,5 +7,7 @@
 #include "container.h"
 #include "abstract.h"
 #include "hierarchies.h"
+#include "copying.h"
+#include "templates.h"
 
 #endif //CPP_BJARNE_CODE_CHAPTER_3_H

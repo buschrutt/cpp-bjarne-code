@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include "hierarchies.h"
 
 namespace chapter_3::hierarchies
@@ -87,8 +88,51 @@ namespace chapter_3::hierarchies
     }
     /// End Of ^^^^^ %%%%%%%%%% %%%%%%%%%% Smiley
 
+    /// Begin Of %%%%%%%%%% %%%%%%%%%% Triangle
+
+    void Triangle::move(Point to) {
+        int x_shift = to.x - p1_.x;
+        int y_shift = to.y - p1_.y;
+        p1_ = to;
+        p2_.x += x_shift;
+        p2_.y += y_shift;
+        p3_.x += x_shift;
+        p3_.y += y_shift;
+    }
+
+    std::string Triangle::draw() const {
+        std::string triangle_str;
+        triangle_str = "<line x1=\"" + std::to_string(p1_.x) + "\" y1=\"" + std::to_string(p1_.y) + "\" ";
+        triangle_str += "x2=\"" + std::to_string(p2_.x) + "\" y2=\"" + std::to_string(p2_.y) + "\" ";
+        triangle_str += R"( stroke="black" stroke-width="3" fill="none"/>)";
+        triangle_str += "<line x1=\"" + std::to_string(p2_.x) + "\" y1=\"" + std::to_string(p2_.y) + "\" ";
+        triangle_str += "x2=\"" + std::to_string(p3_.x) + "\" y2=\"" + std::to_string(p3_.y) + "\" ";
+        triangle_str += R"( stroke="black" stroke-width="3" fill="none"/>)";
+        triangle_str += "<line x1=\"" + std::to_string(p3_.x) + "\" y1=\"" + std::to_string(p3_.y) + "\" ";
+        triangle_str += "x2=\"" + std::to_string(p1_.x) + "\" y2=\"" + std::to_string(p1_.y) + "\" ";
+        triangle_str += R"( stroke="black" stroke-width="3" fill="none"/>)";
+        triangle_str += "\n";
+        return triangle_str;
+    }
+
+    /// End Of ^^^^^ %%%%%%%%%% %%%%%%%%%% Triangle
+
     /// DrawSvg supporting method
     void DrawSvg(std::string& filename, const Shape* shape)
+    {
+        std::ofstream svg_f_stream(filename);
+        if (svg_f_stream.is_open())
+        {
+            svg_f_stream << R"(<?xml version="1.0" encoding="UTF-8" ?>)" << "\n";
+            svg_f_stream << R"(<svg xmlns="http://www.w3.org/2000/svg" version="1.1">)" << "\n";
+            svg_f_stream << shape->draw() << "</svg>";
+        } else
+        {
+            std::cerr << "--No file --found"<< std::endl;
+        }
+    }
+
+    void DrawSvgUptr(std::string& filename, std::unique_ptr<Shape>&& shape)
     {
         std::ofstream svg_f_stream(filename);
         if (svg_f_stream.is_open())
@@ -123,6 +167,127 @@ namespace chapter_3::hierarchies
     {
         for (auto p : v)
             p->rotate(angle);
+    }
+
+    Shape* read_shape(std::istream& is) // read shape descriptions from input stream is
+    {
+        Kind k;
+        {
+            // ... read shape header from is and find its Kind k ...
+            int kind_code;
+            is >> kind_code;
+            k = static_cast<Kind>(kind_code);
+        }
+        Point p, p1, p2, p3;
+        int r;
+
+        switch (k) {
+            case Kind::circle:
+            {
+                // read circle data {Point, int} into p and r
+                is >> p.x >> p.y >> r;
+            }
+                return new Circle{p, r};
+            case Kind::triangle:
+            {
+                // read triangle data {Point,Point,Point} into p1, p2, and p3
+                is >> p1.x >> p1.y >> p2.x >> p2.y >> p3.x >> p3.y;
+            }
+                return new Triangle{p1, p2, p3};
+            case Kind::smiley:
+                int e1_x, e1_y, e1_r;
+                int e2_x, e2_y, e2_r;
+                int m_x, m_y, m_shift_x, m_shift_y, e_shift_x, e_shift_y;
+                {
+                    // read smiley data {Point, int, Shape, Shape, Shape} into p, r, e1 ,e2, and m
+                    is >> p.x >> p.y >> r >> e1_x >> e1_y >> e1_r >> e2_x >> e2_y >> e2_r;
+                    is >> m_x >> m_y >> m_shift_x >> m_shift_y >> e_shift_x >> e_shift_y;
+                }
+                auto* ps = new Smiley{p, r};
+                ps->add_eye(new Circle({e1_x, e1_y}, e1_r));
+                ps->add_eye(new Circle({e2_x, e2_y}, e2_r));
+                ps->set_mouth(new Path({m_x, m_y}, {m_shift_x, m_shift_y}, {e_shift_x, e_shift_y}));
+                return ps;
+        }
+        throw std::exception ("no return");
+    }
+
+    void draw_all(std::vector<Shape*>& shapes, std::string& filename) {
+        for (auto shape : shapes)
+            DrawSvg(filename, shape);
+    }
+
+    void user(std::string filename)
+    {
+        std::vector<Shape*> v;
+        std::istringstream is ("1 100 100 200 200 100 200");
+        while (is) {
+            try {
+                v.push_back(read_shape(is));
+            } catch (...){
+                break;
+            }
+        }
+        draw_all(v, filename); //call draw() for each element
+        rotate_all(v,45); //call rotate(45) for each element
+        for (auto p : v) delete p; // remember to delete elements
+    }
+
+    std::unique_ptr<Shape> read_shape_uptr(std::istream& is) // read shape descriptions from input stream is
+    {
+        Kind k;
+        {
+            // ... read shape header from is and find its Kind k ...
+            int kind_code;
+            is >> kind_code;
+            k = static_cast<Kind>(kind_code);
+        }
+        Point p;
+        int r;
+        switch (k) {
+            case Kind::circle:
+            {
+                // read circle data {Point, int} into p and r
+                is >> p.x >> p.y >> r;
+            }
+                return std::unique_ptr<Shape>{new Circle{p, r}}; // §5.2.1
+                // ...
+            default:
+                throw std::exception ("no return");
+        }
+    }
+
+    void draw_all_uptr(std::vector<std::unique_ptr<Shape>>& shapes, std::string& filename) {
+        for (auto & shape : shapes)
+            DrawSvgUptr(filename, std::move(shape));
+    }
+
+    void rotate_all_uptr(std::vector<std::unique_ptr<Shape>>& shapes, int angle) {
+        std::string drawing;
+        for (const auto & shape : shapes)
+            shape->rotate(angle);
+    }
+
+    void user_uptr(std::string& filename)
+    {
+        std::vector<std::unique_ptr<Shape>> v;
+        std::istringstream is ("0 80 80 40"); // draw circle
+        while (is)
+            try {
+                v.push_back(read_shape_uptr(is));
+            } catch (...) {
+                break;
+            }
+        draw_all_uptr(v, filename); // call draw() for each element
+        rotate_all_uptr(v, 45); //call rotate(45) for each element
+    } // all Shapes implicitly destroyed
+
+    void ChapterThree_DrawShapes() {
+        std::cout <<"\nchapter_3::hierarchies::ChapterThree_DrawShapes() --pg.71:\n";
+        std::cout <<"check debug/release folder for files/smile.svg for output\n";
+        std::string filename  = "files/smile.svg";
+        user(filename);
+        user_uptr(filename);
     }
 
 } // chapter_3::hierarchies
